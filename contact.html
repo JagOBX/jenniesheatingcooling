@@ -207,8 +207,11 @@ footer .fine{border-top:1px solid #3C362E;padding:20px 0;font-size:13.5px;displa
     <div class="contact-grid">
       <div class="card">
         <h3>Send us a message</h3>
-        <p style="color:var(--ink-soft);font-size:15px">Fill this out and hit send. It will open an email to our office with your message ready to go.</p>
-        <form onsubmit="var f=this;location.href='mailto:jenniesheatingcooling@gmail.com?subject='+encodeURIComponent('Website inquiry from '+f.fname.value+' '+f.lname.value)+'&body='+encodeURIComponent(f.comment.value+'\n\nReply to: '+f.email.value+(f.phone.value?'\nPhone: '+f.phone.value:''));return false;">
+        <p style="color:var(--ink-soft);font-size:15px">Fill this out and hit send. Your message goes straight to our office and we will get back to you.</p>
+        <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="de7fb16f-5a02-423d-a167-89d2fe341cd9">
+          <input type="hidden" name="subject" value="New message from jenniesheatingcooling.com">
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
           <div class="row">
             <div><label for="fname">First name *</label><input id="fname" name="fname" required></div>
             <div><label for="lname">Last name *</label><input id="lname" name="lname" required></div>
@@ -219,9 +222,31 @@ footer .fine{border-top:1px solid #3C362E;padding:20px 0;font-size:13.5px;displa
           </div>
           <label for="comment">How can we help? *</label>
           <textarea id="comment" name="comment" rows="5" required></textarea>
-          <p style="margin-top:18px"><button class="btn" type="submit">Send Message</button></p>
-          <p class="note">Prefer the phone? VA: (757) 495-7152 • NC: 252-202-3637</p>
+          <p style="margin-top:18px"><button class="btn" type="submit" id="cf-btn">Send Message</button></p>
         </form>
+        <p class="note" id="cf-status">Prefer the phone? VA: (757) 495-7152 • NC: 252-202-3637</p>
+        <script>
+        document.getElementById('contact-form').addEventListener('submit', function(e){
+          e.preventDefault();
+          var form = this, btn = document.getElementById('cf-btn'), status = document.getElementById('cf-status');
+          var data = new FormData(form);
+          data.set('name', (form.fname.value + ' ' + form.lname.value).trim());
+          data.set('subject', 'Website message from ' + form.fname.value + ' ' + form.lname.value);
+          btn.disabled = true; btn.textContent = 'Sending...';
+          fetch('https://api.web3forms.com/submit', {method:'POST', body:data})
+            .then(function(r){ return r.json(); })
+            .then(function(res){
+              if(res.success){
+                form.style.display = 'none';
+                status.innerHTML = '<strong style="color:#3E4E42;font-size:17px">Thank you! Your message is on its way.<\/strong><br>We will get back to you as soon as we can. Need us sooner? VA: (757) 495-7152 • NC: 252-202-3637';
+              } else { throw new Error(res.message || 'Submission failed'); }
+            })
+            .catch(function(){
+              btn.disabled = false; btn.textContent = 'Send Message';
+              status.innerHTML = 'Something went wrong sending your message. Please try again, or call us. VA: (757) 495-7152 • NC: 252-202-3637';
+            });
+        });
+        </script>
       </div>
       <div>
         <div class="card" style="margin-bottom:20px">
