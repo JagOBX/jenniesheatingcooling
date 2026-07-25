@@ -4,7 +4,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact Us | Jennie's Heating & Cooling</title>
-<meta name="description" content="Contact Jennie's Heating & Cooling. VA (757) 495-7152, NC (252) 202-3637. Free estimates.">
+<meta name="description" content="Contact Jennie&#x27;s Heating &amp; Cooling. VA (757) 495-7152, NC (252) 202-3637. Free estimates.">
+<link rel="canonical" href="https://jenniesheatingcooling.com/contact.html">
+<meta name="theme-color" content="#3E4E42">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Jennie's Heating &amp; Cooling">
+<meta property="og:title" content="Contact Us | Jennie&#x27;s Heating &amp; Cooling">
+<meta property="og:description" content="Contact Jennie&#x27;s Heating &amp; Cooling. VA (757) 495-7152, NC (252) 202-3637. Free estimates.">
+<meta property="og:url" content="https://jenniesheatingcooling.com/contact.html">
+<meta property="og:image" content="https://jenniesheatingcooling.com/og-image.png">
+<meta property="og:image:secure_url" content="https://jenniesheatingcooling.com/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Jennie's Heating &amp; Cooling, family owned HVAC since 1994">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Contact Us | Jennie&#x27;s Heating &amp; Cooling">
+<meta name="twitter:description" content="Contact Jennie&#x27;s Heating &amp; Cooling. VA (757) 495-7152, NC (252) 202-3637. Free estimates.">
+<meta name="twitter:image" content="https://jenniesheatingcooling.com/og-image.png">
+<meta name="twitter:image:alt" content="Jennie's Heating &amp; Cooling, family owned HVAC since 1994">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="favicon-256.png" sizes="256x256">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
@@ -99,9 +121,9 @@ p.sub{color:var(--ink-soft);max-width:44em;margin-bottom:36px;font-size:18px}
 
 /* stats strip */
 .stats{background:var(--pine);color:#F4EFE6}
-.stats .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding-top:44px;padding-bottom:44px;text-align:center}
-.stats .num{font-family:'Fraunces',Georgia,serif;font-size:38px;font-weight:700;color:var(--amber)}
-.stats .lbl{font-size:14.5px;color:#CBD4C6;margin-top:4px}
+.stats .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(8px,2.2vw,24px);padding-top:44px;padding-bottom:44px;text-align:center}
+.stats .num{font-family:'Fraunces',Georgia,serif;font-size:clamp(24px,5.4vw,38px);font-weight:700;color:var(--amber);line-height:1.1}
+.stats .lbl{font-size:clamp(11px,2.7vw,14.5px);color:#CBD4C6;margin-top:6px;line-height:1.35;overflow-wrap:break-word}
 
 /* brand logos row */
 .brands-row{display:flex;gap:16px;flex-wrap:wrap}
@@ -142,13 +164,26 @@ footer .brand-line{display:flex;align-items:center;gap:10px;margin-bottom:12px}
 footer .brand-line .mark{width:38px;height:38px}
 footer .fine{border-top:1px solid #3C362E;padding:20px 0;font-size:13.5px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
+/* our work gallery */
+.work-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:30px}
+.work-grid figure{margin:0}
+.work-grid button.shot{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;border-radius:14px;overflow:hidden;box-shadow:0 10px 24px rgba(51,41,31,.14);line-height:0}
+.work-grid img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;transition:transform .35s ease}
+.work-grid button.shot:hover img{transform:scale(1.04)}
+.work-grid figcaption{font-size:14.5px;color:var(--ink-soft);margin-top:12px;line-height:1.45}
+.lightbox{position:fixed;inset:0;background:rgba(33,26,20,.9);display:none;align-items:center;justify-content:center;z-index:200;padding:28px}
+.lightbox.open{display:flex}
+.lightbox img{max-width:92vw;max-height:82vh;border-radius:12px;box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.lightbox .cap{position:absolute;bottom:26px;left:0;right:0;text-align:center;color:#F4EFE6;font-size:15px;padding:0 24px}
+.lightbox .close{position:absolute;top:20px;right:24px;background:none;border:0;color:#F4EFE6;font-size:34px;line-height:1;cursor:pointer;padding:6px 12px}
+
 /* responsive */
 @media(max-width:900px){
   .grid.c3,.grid.c4{grid-template-columns:1fr 1fr}
   .hero .wrap{grid-template-columns:1fr;padding-top:48px;padding-bottom:56px}
   .hero-art{display:none}
   .story .wrap{grid-template-columns:1fr}
-  .stats .wrap{grid-template-columns:1fr 1fr;gap:32px}
+  .work-grid{grid-template-columns:1fr 1fr;gap:16px}
   .contact-grid{grid-template-columns:1fr}
   footer.site .cols{grid-template-columns:1fr 1fr}
   nav.main{display:none;position:absolute;top:100%;left:0;right:0;background:var(--cream);flex-direction:column;gap:0;border-bottom:1px solid var(--line);padding:8px 24px 16px;z-index:100;box-shadow:0 14px 24px rgba(51,41,31,.15)}
@@ -161,6 +196,8 @@ footer .fine{border-top:1px solid #3C362E;padding:20px 0;font-size:13.5px;displa
 @media(max-width:560px){
   .grid.c3,.grid.c4,.grid.c2,form .row{grid-template-columns:1fr}
   .cta-band{padding:32px}
+  .work-grid{gap:14px}
+  .work-grid figcaption{font-size:13.5px;margin-top:8px}
   .topbar .est{display:none}
 }
 @media(max-width:640px){
